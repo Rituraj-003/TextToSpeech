@@ -1,18 +1,37 @@
 import pyttsx3
 
-engine = pyttsx3.init()
-
-engine.setProperty('rate', 150)
-engine.setProperty('volume', 0.8)
-
-
-#engine.say("Hello Sunami! This is a text to speech test.")
-engine.runAndWait()
-
-def speak(string = "", num = 1, ratee = 150):
-    for i in range(num):
-        engine.setProperty('rate',ratee)
-        engine.say(string)
-        engine.runAndWait()
+class TextToSpeech:
+    def __init__(self):
     
-speak("Nigga",10, 2000)
+        self.speaker = pyttsx3.init()
+        self.speakTimes = 0
+        self.volumeTimes = 0
+        
+    def speak(self,string):
+        
+        self.speaker.say(string)
+        self.speaker.runAndWait()
+        self.speakTimes += 1
+        
+    def set_speed(self,speed):
+        
+        self.speaker.setProperty('rate',speed)
+        
+        
+    def set_volume(self,vol):
+        
+        self.speaker.setProperty('volume',vol)
+        self.volumeTimes += 1
+        
+    def get_metric(self):
+        
+        print(f'Called Speak : {self.speakTimes} \nCalled Volume : {self.volumeTimes}')    
+        
+engine = TextToSpeech()
+engine.set_volume(1)
+engine.set_speed(150)
+
+engine.speak("Nigger what the fuck dude are you fucking crazy")
+
+engine.get_metric()
+
