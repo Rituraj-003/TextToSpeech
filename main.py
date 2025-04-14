@@ -5,8 +5,6 @@ engine = pyttsx3.init()
 engine.setProperty('rate', 150)
 engine.setProperty('volume', 0.8)
 
-
-#engine.say("Hello Sunami! This is a text to speech test.")
 engine.runAndWait()
 
 def speak(string = "", num = 1, ratee = 150):
